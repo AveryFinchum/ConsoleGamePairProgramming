@@ -68,7 +68,11 @@ namespace PairProgramming
 
         public void DrawKeyboard()
         {
+
             ProgramUI p = new ProgramUI();
+            int boxPadding = 1;
+            DrawBox(boxPadding, ((8 * p.gameBlockSize)) - boxPadding, (boxPadding * 2) + (10 * p.gameBlockSize), (boxPadding * 2) + (3 * p.gameBlockSize));
+
             int row = 0;
             int column = 3;
             int distanceToPrint = 0;
@@ -88,11 +92,58 @@ namespace PairProgramming
                     numb = 0;
                 }
                 distanceToPrint = column + (p.gameBlockSize * numb);
+
+                //lookup characters color
+                //set console color
                 PrintLetterTile(keysToDraw[i], distanceToPrint, ((8 * p.gameBlockSize) + (row * p.gameBlockSize)));
                 numb++;
             }
 
 
+        }
+
+        public void DrawBox(int offsetX, int offsetY, int sizeX, int sizeY)
+        {
+            for (int y = offsetY; y <= offsetY + sizeY; y++)
+            {
+                for (int x = offsetX; x <= offsetX + sizeX; x++)
+                {
+                    Console.SetCursorPosition(x, y);
+
+                    if (y == offsetY || y != offsetY + sizeY) // top and bottom
+                    {
+                        if (y == offsetY && x == offsetX)//Top left corner 
+                        {
+                            Console.Write("╔");
+                        }
+                        else if (y == offsetY && x == offsetX + sizeX)//Top Right Corner 
+                        {
+                            Console.Write("╗");
+                        }
+                        else if (y == offsetY + sizeY - 1 && x == offsetX)//Bottom Left Corner 
+                        {
+                            Console.Write("╚");
+                        }
+                        else if (y == offsetY + sizeY - 1 && x == offsetX + sizeX)//Bottom Right Corner 
+                        {
+                            Console.Write("╝");
+                        }
+                        else if ((x == offsetX || x == offsetX + sizeX))//sides 
+                        {
+                            Console.Write("║");
+                        }
+                        else if (y == offsetY || y == offsetY + sizeY - 1)  // Middle section for top and bottom
+                        {
+                            Console.Write("═");
+
+                        }
+                        else { 
+                        //Middle area
+                        }
+
+                    }
+                }
+            }
         }
     }
 }
