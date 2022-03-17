@@ -105,7 +105,7 @@ namespace PairProgramming
             Console.SetCursorPosition(x, y++); Console.Write("║░░░║");
             Console.SetCursorPosition(x, y++); Console.Write($"║░{letter.ToString().ToUpper()}░║");
             Console.SetCursorPosition(x, y++); Console.Write("║░░░║");
-            Console.SetCursorPosition(x, y); Console.Write("╚═══╝");
+            Console.SetCursorPosition(x, y);   Console.Write("╚═══╝");
 
             Console.ForegroundColor = ConsoleColor.White;
 

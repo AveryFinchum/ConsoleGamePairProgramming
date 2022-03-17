@@ -62,15 +62,16 @@ namespace PairProgramming
             //scrub user input for only letters, only allow 5 ✓
             //add character at a time
 
-            string Splash = @" __       __                            __  __           
-|  \  _  |  \                           |  \ |  \          
-| $$ / \ | $$  ______    ______     ____| $$ | $$   ______
-| $$/  $\| $$ /      \  /       \  /      $$ | $$  /      \ 
-| $$  $$$\ $$|  $$$$$$\ |  $$$$$$\|  $$$$$$$ | $$ |  $$$$$$\
-| $$ $$\$$\$$| $$  | $$ | $$   \$$| $$  | $$ | $$ | $$    $$
-| $$$$  \$$$$| $$__ / $$| $$      | $$__ | $$| $$ | $$$$$$$$
-| $$$    \$$$ \$$    $$ | $$       \$$    $$ | $$  \$$     \
- \$$      \$$  \$$$$$$   \$$        \$$$$$$$  \$$   \$$$$$$$
+            string Splash = @"
+ __       __                              __   __           
+|  \  _  |  \                            |  \ |  \          
+| $$ / \ | $$   ______    ______     ____| $$ | $$   ______
+| $$/  $\| $$ /       \  /      \   /      $$ | $$  /      \ 
+| $$  $$$\ $$ |  $$$$$$\ |  $$$$$$\|  $$$$$$$ | $$ |  $$$$$$\
+| $$ $$\$$\$$ | $$  | $$ | $$   \$$| $$  | $$ | $$ | $$    $$
+| $$$$  \$$$$ | $$__/ $$ | $$      | $$__| $$ | $$ | $$$$$$$$
+| $$$    \$$$  \$$    $$ | $$       \$$    $$ | $$  \$$     \
+ \$$      \$$   \$$$$$$   \$$        \$$$$$$$  \$$   \$$$$$$$
                                                          
 ";
 
@@ -78,7 +79,7 @@ namespace PairProgramming
             {
                 foreach (char l in Splash)
                 {
-                    Thread.Sleep(3);
+                    Thread.Sleep(2);
                     Console.Write(l);
                 }
                 Console.WriteLine();
@@ -91,7 +92,7 @@ namespace PairProgramming
 
             {
                 drawSplash();
-                Thread.Sleep(1000);
+                Console.ReadKey();
                 Console.Clear();
                 Console.Write("Welcome to FakeWordle! Would you like to: \n" +
                     "1. Read the rules? \n" +
