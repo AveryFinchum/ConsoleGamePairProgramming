@@ -8,6 +8,26 @@ namespace PairProgramming
 {
     public class DisplayMethods
     {
+        // private Dictionary<char, letterColorValue> _keyboardColorGuesses = new Dictionary<char, letterColorValue>();
+
+        //  public struct letterColorValue
+        //{
+        //  public bool green;
+        //public bool yellow;
+        // public bool black;
+        // }
+
+
+
+
+        public void GetStruct(bool green, bool yellow, bool black)
+        {
+
+
+
+        }
+
+
 
         public void CorrectLetterInCorrectSpot(char letter, int x, int y)
         {
@@ -27,30 +47,56 @@ namespace PairProgramming
             PrintLetterTile(letter, x, y);
         }
 
-        public void YouWin(int x, int y)
+        public void GameEnd(int x, int y, bool won)
         {
             ProgramUI p = new ProgramUI();
             Random randy = new Random();
 
-            string winMsg = "you win!asd";
+            string msg = "you win!";
+            if (won)
+            {
+                msg = "you win!";
+            }
+            else
+            {
+                msg = "you fail!";
+            }
 
 
 
             if (x > 0)
             {
-                x = x - ((winMsg.Length / 2) * p.gameBlockSize / 2);
+                x = x - ((msg.Length / 2) * p.gameBlockSize / 2);
             }
-            foreach (char l in winMsg)
+            foreach (char l in msg)
             {
                 Thread.Sleep(200);
 
                 int n = randy.Next(1, 16);
-                Console.ForegroundColor = (ConsoleColor)n;
-                PrintLetterTile(l, x, y);
+                
+                if (won)
+                {
+                    Console.ForegroundColor = (ConsoleColor)n;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    
+                }
+
+                PrintLetterTile( ((l==' ')? '░': l ), x, y);
                 x += p.gameBlockSize;
 
+
             }
+                Console.ReadKey();
+            Console.Clear();
         }
+        public void PrintLetterTile(char letter)
+        {
+            PrintLetterTile(letter, Console.CursorLeft, Console.CursorTop);
+        }
+
 
         public void PrintLetterTile(char letter, int x, int y)
         {
@@ -66,7 +112,7 @@ namespace PairProgramming
         }
         char[] keysToDraw = { 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm' };
 
-        public void DrawKeyboard()
+        public void DrawKeyboard(Dictionary<char, KeyboardDict> letters)
         {
 
             ProgramUI p = new ProgramUI();
@@ -95,6 +141,21 @@ namespace PairProgramming
 
                 //lookup characters color
                 //set console color
+
+                if (letters[keysToDraw[i]].Green)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                else if (letters[keysToDraw[i]].Yellow)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else if (letters[keysToDraw[i]].Black && !letters[keysToDraw[i]].Green && !letters[keysToDraw[i]].Yellow)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                }
+
+
                 PrintLetterTile(keysToDraw[i], distanceToPrint, ((8 * p.gameBlockSize) + (row * p.gameBlockSize)));
                 numb++;
             }
@@ -137,13 +198,19 @@ namespace PairProgramming
                             Console.Write("═");
 
                         }
-                        else { 
-                        //Middle area
+                        else
+                        {
+                            //Middle area
                         }
 
                     }
                 }
             }
         }
+
+
+
+
+
     }
 }
