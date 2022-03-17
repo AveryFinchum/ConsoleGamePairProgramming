@@ -40,7 +40,7 @@ namespace PairProgramming
             int gamePositionY = cursorOffsetY;
 
             //Console.SetBufferSize(windowSizeX+1, windowSizeY+1);
-            Console.SetWindowSize(windowSizeX, windowSizeY);
+            //Console.SetWindowSize(windowSizeX, windowSizeY);
 
 
             int attempts = 6;
@@ -61,11 +61,38 @@ namespace PairProgramming
             //add border boxes
             //scrub user input for only letters, only allow 5 ✓
             //add character at a time
+
+            string Splash = @" __       __                            __  __           
+|  \  _  |  \                           |  \ |  \          
+| $$ / \ | $$  ______    ______     ____| $$ | $$   ______
+| $$/  $\| $$ /      \  /       \  /      $$ | $$  /      \ 
+| $$  $$$\ $$|  $$$$$$\ |  $$$$$$\|  $$$$$$$ | $$ |  $$$$$$\
+| $$ $$\$$\$$| $$  | $$ | $$   \$$| $$  | $$ | $$ | $$    $$
+| $$$$  \$$$$| $$__ / $$| $$      | $$__ | $$| $$ | $$$$$$$$
+| $$$    \$$$ \$$    $$ | $$       \$$    $$ | $$  \$$     \
+ \$$      \$$  \$$$$$$   \$$        \$$$$$$$  \$$   \$$$$$$$
+                                                         
+";
+
+            void drawSplash()
+            {
+                foreach (char l in Splash)
+                {
+                    Thread.Sleep(3);
+                    Console.Write(l);
+                }
+                Console.WriteLine();
+            }
+
+
+
             bool mainMenu = true;
             while (mainMenu)
 
             {
-
+                drawSplash();
+                Thread.Sleep(1000);
+                Console.Clear();
                 Console.Write("Welcome to FakeWordle! Would you like to: \n" +
                     "1. Read the rules? \n" +
                     "2. Play the game? \n" +
